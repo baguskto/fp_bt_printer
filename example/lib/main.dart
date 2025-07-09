@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-import 'package:esc_pos_utils/esc_pos_utils.dart';
+import 'package:flutter_esc_pos_utils/flutter_esc_pos_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image/image.dart';
@@ -104,8 +104,7 @@ class _HomeSecreenState extends State<HomeSecreen> {
                     return ListTile(
                       leading: Icon(Icons.print_rounded),
                       onTap: () => setConnet(devices[index]),
-                      title: Text(
-                          '${devices[index].name} - ${devices[index].address}'),
+                      title: Text('${devices[index].name} - ${devices[index].address}'),
                       subtitle: Text("Click to connect"),
                     );
                   },
@@ -134,17 +133,13 @@ class _HomeSecreenState extends State<HomeSecreen> {
                   ListTile(
                     minVerticalPadding: 5,
                     dense: true,
-                    title: connected
-                        ? Center(child: Text(device!.name!))
-                        : Center(child: Text("No device")),
+                    title: connected ? Center(child: Text(device!.name!)) : Center(child: Text("No device")),
                     subtitle: connected
                         ? Center(child: Text(device!.address))
                         : Center(child: Text("Select a device of the list")),
                   ),
                   TextButton(
-                    onPressed: connected
-                        ? () => this.printTicket(device!.address)
-                        : null,
+                    onPressed: connected ? () => this.printTicket(device!.address) : null,
                     child: Text("PRINT DATA"),
                   ),
                 ],
@@ -167,21 +162,17 @@ class _HomeSecreenState extends State<HomeSecreen> {
     var image = decodePng(bytesImg);
 
     // resize
-    var thumbnail =
-        copyResize(image!, interpolation: Interpolation.nearest, height: 200);
+    var thumbnail = copyResize(image!, interpolation: Interpolation.nearest, height: 200);
 
-    bytes += generator.text("fp_bt_printer",
-        styles: PosStyles(align: PosAlign.center, bold: true));
+    bytes += generator.text("fp_bt_printer", styles: PosStyles(align: PosAlign.center, bold: true));
 
     bytes += generator.imageRaster(thumbnail, align: PosAlign.center);
 
     bytes += generator.reset();
     bytes += generator.setGlobalCodeTable('CP1252');
     bytes += generator.feed(1);
-    bytes += generator.text("HELLO PRINTER by FPV",
-        styles: PosStyles(align: PosAlign.center, bold: true));
-    bytes += generator.qrcode("https://github.com/FranciscoPV94",
-        size: QRSize.Size6);
+    bytes += generator.text("HELLO PRINTER by FPV", styles: PosStyles(align: PosAlign.center, bold: true));
+    bytes += generator.qrcode("https://github.com/FranciscoPV94", size: QRSize.size6);
     bytes += generator.feed(1);
     bytes += generator.feed(1);
 
