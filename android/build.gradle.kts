@@ -2,7 +2,7 @@ group = "com.fperalta.dev.fp_bt_printer"
 version = "1.0-SNAPSHOT"
 
 buildscript {
-    extra["kotlin_version"] = "2.1.0"
+    val kotlinVersion = "2.1.0"
     repositories {
         google()
         mavenCentral()
@@ -10,7 +10,7 @@ buildscript {
 
     dependencies {
         classpath("com.android.tools.build:gradle:8.9.1")
-        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${extra["kotlin_version"]}")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion")
     }
 }
 
@@ -49,5 +49,5 @@ android {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${extra["kotlin_version"]}")
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:2.1.0")
 } 
