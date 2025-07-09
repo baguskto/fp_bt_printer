@@ -1,0 +1,1 @@
+/Users/baguskto/Downloads/Work/forks/fp_bt_printer /fp_bt_printer/example/build/app/intermediates/cxx/Debug/358106r1/obj/armeabi-v7a
